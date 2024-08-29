@@ -64,8 +64,18 @@ public class Main {
                 try {
                     int decimal = ConvertirDecimal(romano);
                     System.out.println("El número romano " + romano + " es igual a " + decimal + " en decimal.");
-                }
+
+                csvWriter.append(romano).append(",").append(String.valueOf(decimal)).append("\n");
+            } catch (IllegalArgumentException e) {
+                // Excepcion para caracter invalido
+                System.err.println("Error: " + e.getMessage());
             }
         }
+    } catch (IOException e) {
+        System.err.println("Error al escribir el archivo CSV: " + e.getMessage());
     }
+}
+}
+
+
 
