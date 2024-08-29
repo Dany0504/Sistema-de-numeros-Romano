@@ -38,7 +38,34 @@ public class Main {
                     //Excepcion invalida
                     throw new IllegalArgumentException(c + " no es un numero romano.");
             }
+// Si el valor actual es menor que el anterior, restarlo en lugar de sumarlo
+            if (VActual < VAnterior) {
+                total -= VActual;
+            } else {
+                total += VActual;
+            }
 
+            VAnterior = VActual;
+        }
+
+        return total;
+    }
+
+    public static void main(String[] args) {
+        if (args.length == 0) {
+            System.out.println("Ingresa Un Argumento");
+            return;
+        }
+
+        try (FileWriter csvWriter = new FileWriter("ConversionDecimal.csv")) {
+            csvWriter.append("Romano,Decimal\n");
+
+            for (String romano : args) {
+                try {
+                    int decimal = ConvertirDecimal(romano);
+                    System.out.println("El número romano " + romano + " es igual a " + decimal + " en decimal.");
+                }
+            }
         }
     }
-}
+
