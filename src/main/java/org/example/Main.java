@@ -67,7 +67,7 @@ public class Main {
 
                 csvWriter.append(romano).append(",").append(String.valueOf(decimal)).append("\n");
             } catch (IllegalArgumentException e) {
-                // Excepcion para caracter invalido
+                // Excepcion para caracter invalido.
                 System.err.println("Error: " + e.getMessage());
             }
         }
